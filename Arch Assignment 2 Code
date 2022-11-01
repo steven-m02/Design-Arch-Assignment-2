@@ -1,1 +1,135 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+public class test implements ActionListener {
+
+
+
+    private  static   JLabel label;
+    private static  JTextField input;
+    private  static  JButton enter;
+    private static JButton reset;
+    private static JLabel output;
+    private  static JLabel heading;
+
+
+
+
+    public static void main(String[] args) {
+        JPanel panel = new JPanel();
+        JFrame frame =new JFrame();
+
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(900,400);
+        panel.setBorder(BorderFactory.createEmptyBorder(30,10,30,30));
+        panel.setLayout(new GridLayout(0, 1));
+
+        frame.add(panel);
+        panel.setLayout(null);
+
+
+        heading= new JLabel(" Shopping Store ");
+        heading.setFont(new Font("Arial", Font.PLAIN, 30));
+        heading.setBounds(300, 2 ,300, 100);
+        label = new JLabel("Enter the barcode: ");
+        label.setFont(new Font("Arial", Font.BOLD, 15));
+        label.setBounds(50, 50 ,150, 100);
+        input = new JTextField(20);
+        input.setFont(new Font("Arial", Font.BOLD, 15));
+
+
+
+        input.setBounds(190, 90,600,30);
+        enter = new JButton("Enter");
+
+        enter.setBounds(300,200,80,25);
+        enter.addActionListener(new test());
+
+        reset =new JButton("Reset");
+        reset.setBounds(500, 200, 80,25);
+        reset.addActionListener(new test());
+
+
+        output = new JLabel();
+        output.setFont(new Font("Arial", Font.BOLD, 15));
+        output.setBounds(200,300,500,25);
+
+        panel.add(heading);
+        panel.add(label);
+        panel.add(input);
+        panel.add(enter);
+        panel.add(output);
+
+        panel.add(reset);
+
+
+
+        frame.setVisible(true);
+
+
+
+
+
+
+
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==enter) {
+            String barcode_id= input.getText();
+            int x = Integer.parseInt(barcode_id);
+            if(x==1213){
+                String price= "$100";
+                String product_name= "Apple pen";
+                output.setText("The name of this product is: "+product_name + " price is: "+ price );
+            }
+
+            else if(x==2424){
+
+                String price= "$300";
+                String product_name= "Apple watch series 3";
+                output.setText("The name of this product is: "+product_name + " price is: "+ price );
+            }
+
+            else if(x==3535){
+                String price= "$200";
+                String product_name= "Apple airpods";
+                output.setText("The name of this product is: "+product_name + " price is: "+ price );
+            }
+
+            else {
+
+                output.setText("Barcode not found");
+            }
+
+
+
+
+
+
+        }
+
+        if (e.getSource()==reset){
+
+            input.setText(null);
+            output.setText(null);
+        }
+
+
+
+
+
+
+
+
+    }
+}
+
 
